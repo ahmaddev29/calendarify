@@ -45,6 +45,7 @@ export default function EventTypeForm({
         newBookingTimes[day] = { from: "00:00", to: "00:00", active: false };
       }
 
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       newBookingTimes[day][prop] = val;
 

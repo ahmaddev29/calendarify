@@ -1,5 +1,5 @@
 "use client";
-import { weekdaysNames, weekdaysShortNames } from "@/libs/shared";
+import { weekdaysShortNames } from "@/libs/shared";
 import { BookingTimes, WeekdayName } from "@/libs/types";
 import axios from "axios";
 import { clsx } from "clsx";
@@ -23,7 +23,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { TimeSlot } from "nylas";
 import { useEffect, useState } from "react";
-import { BounceLoader, PulseLoader } from "react-spinners";
+import { PulseLoader } from "react-spinners";
 
 export default function TimePicker({
   bookingTimes,
@@ -65,7 +65,7 @@ export default function TimePicker({
     const bookingFrom = time;
     const bookingTo = addMinutes(new Date(time), length);
 
-    for (let busySlot of busySlots) {
+    for (const busySlot of busySlots) {
       const busyFrom = new Date(parseInt(busySlot.startTime) * 1000);
       const busyTo = new Date(parseInt(busySlot.endTime) * 1000);
       if (isAfter(bookingTo, busyFrom) && isBefore(bookingTo, busyTo)) {
